@@ -1,0 +1,10 @@
+services:
+  # Forward host UDP 51801 to raspi:51820 (e.g. a WireGuard peer)
+  socat_raspi:
+    build: .
+    container_name: socat_otherserver
+    restart: unless-stopped
+    environment:
+      DESTINATION: "otherserverip:51820"
+    ports:
+      - "51801:8888/udp"
