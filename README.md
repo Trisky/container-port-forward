@@ -30,7 +30,7 @@ See [compose.yml](compose.yml):
 ```yaml
 services:
   socat_raspi:
-    build: .
+    image: ghcr.io/trisky/container-port-forward:latest
     container_name: socat_raspi
     restart: unless-stopped
     environment:
@@ -47,13 +47,14 @@ For TCP, add `PROTOCOL: "TCP"` and use `/tcp` in the port mapping.
 
 You can run this with Docker or with [Podman](https://podman.io/). (just replace `podman` with `docker`)
 
+The image is published to the GitHub Container Registry as
+`ghcr.io/trisky/container-port-forward`:
+
 ```sh
-
-
 podman run -d --name socat_raspi \
   -e DESTINATION=otherserverip:51820 \
   -p 51801:8888/udp \
-  trisky/container-port-forward
+  ghcr.io/trisky/container-port-forward:latest
 ```
 
 For TCP, add `-e PROTOCOL=TCP` and use `/tcp` in the port mapping.

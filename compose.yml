@@ -1,7 +1,7 @@
 services:
   # Forward host UDP 51801 to raspi:51820 (e.g. a WireGuard peer)
   socat_raspi:
-    build: .
+    image: ghcr.io/trisky/container-port-forward:latest
     container_name: socat_otherserver
     restart: unless-stopped
     environment:
