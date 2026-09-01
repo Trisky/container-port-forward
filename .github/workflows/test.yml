@@ -3,18 +3,18 @@ name: Test container image
 on: [pull_request, workflow_call]
 
 permissions:
-    contents: read
+  contents: read
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v7
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
 
-            - name: Build image
-              run: docker build --file Containerfile --tag container-port-forward:test .
+      - name: Build image
+        run: docker build --file Containerfile --tag container-port-forward:test .
 
-            - name: Test image
-              run: sh tests/test-container.sh
+      - name: Test image
+        run: sh tests/test-container.sh
